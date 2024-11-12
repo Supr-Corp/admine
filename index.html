@@ -19,13 +19,13 @@
             background-color: #f1f1f1;
         }
 
-        /* Centered Floating Circular Header */
+        /* Floating Header with Menu */
         header {
-            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+            background-color: rgba(0, 0, 0, 0.6);
             color: #fff;
             width: 60px;
             height: 60px;
-            border-radius: 50%; /* Circular shape */
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -35,33 +35,25 @@
             transform: translateX(-50%);
             z-index: 1000;
             backdrop-filter: blur(10px);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Floating shadow */
-            transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease; /* Smooth expansion */
-            overflow: hidden; /* Hide content initially */
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease;
+            overflow: hidden;
         }
-
-        /* Expanded Header Style on Hover with Rounded Corners */
         header:hover {
-            width: 90%; /* Expand to almost full width */
+            width: 90%;
             height: auto;
-            border-radius: 15px; /* Rounded corners on expansion */
+            border-radius: 15px;
             padding: 1em;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
-
-        /* Header Content */
         header h1 {
-            display: none; /* Hide full title initially */
+            display: none;
             font-size: 2rem;
             margin-left: 1em;
         }
-
-        /* Show title on hover */
         header:hover h1 {
-            display: block; /* Show when expanded */
+            display: block;
         }
-
-        /* Menu Icon */
         .menu-icon {
             width: 30px;
             height: 2px;
@@ -85,13 +77,33 @@
             top: 8px;
         }
         header:hover .menu-icon {
-            transform: rotate(45deg); /* Rotate icon on hover */
+            transform: rotate(45deg);
         }
-        header:hover .menu-icon::before {
-            transform: rotate(-90deg) translate(-8px, -8px);
-        }
+        header:hover .menu-icon::before,
         header:hover .menu-icon::after {
-            transform: rotate(-90deg) translate(8px, -8px);
+            transform: rotate(-90deg);
+        }
+
+        /* Header Options */
+        .header-options {
+            display: none;
+            text-align: center;
+            margin-top: 1em;
+        }
+        header:hover .header-options {
+            display: flex;
+            gap: 1.5em;
+            justify-content: center;
+        }
+        .header-option {
+            color: #fff;
+            cursor: pointer;
+            padding: 0.5em 1em;
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+        .header-option:hover {
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         /* Floating Panels with Rounded Corners */
@@ -110,7 +122,7 @@
             text-align: center;
             background: linear-gradient(120deg, #1e90ff, #0b3d91);
             color: #fff;
-            margin-top: 120px; /* Space for floating header */
+            margin-top: 120px;
         }
         .hero h2 {
             font-size: 3rem;
@@ -127,45 +139,18 @@
             padding: 0.75em 1.5em;
             border: none;
             border-radius: 5px;
-            font-size: 1rem;
             cursor: pointer;
             transition: background 0.3s;
-            transform: scale(1);
-            animation: bounce 1s infinite;
         }
         .btn-primary:hover {
             background: #ff8500;
         }
 
-        /* Smooth Gradient Transition */
-        .hero,
-        .how-it-works {
-            transition: background 1s ease; /* Smooth background transition */
-        }
-
-        /* How It Works Section */
-        .how-it-works {
-            background: linear-gradient(180deg, #0b3d91, #f1f1f1);
-            color: #333;
-            text-align: center;
-        }
-        .how-it-works h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1em;
-        }
-        .how-it-works p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2em;
-        }
-
-        /* Features Section */
-        .features {
+        /* Floating Features Panel */
+        .features.floating-panel {
             display: flex;
             justify-content: space-around;
             padding: 3em;
-            background-color: #f9f9f9;
-            animation: fadeInUp 1.5s ease-out;
         }
         .feature-box {
             max-width: 300px;
@@ -201,13 +186,44 @@
             margin-bottom: 1em;
         }
 
-        /* Footer */
-        footer {
+        /* Popup Styling */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 2em;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
             text-align: center;
-            padding: 1em;
-            background-color: #222;
-            color: #bbb;
-            font-size: 0.9rem;
+        }
+        .popup h3 {
+            margin-bottom: 1em;
+        }
+        .popup button {
+            margin-top: 1em;
+            padding: 0.5em 1em;
+            background-color: #ff9f00;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Overlay for Popups */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
         }
 
         /* Animations */
@@ -219,71 +235,92 @@
                 opacity: 1;
             }
         }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @keyframes bounce {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- Floating, Centered Circular Header with Expandable Menu Icon -->
-    <header>
-        <div class="menu-icon"></div>
-        <h1>AdMiner</h1>
-    </header>
 
-    <!-- Floating Main Title Panel -->
-    <section class="hero floating-panel">
-        <h2>Earn Money While Viewing Ads</h2>
-        <p>With AdMiner, you can start mining ads today and earn around $5 daily. It's safe, trusted, and easy to use.</p>
-        <a href="thankyou.html" class="btn-primary" onclick="downloadAdMiner()">Download AdMiner</a>
-    </section>
+<!-- Floating, Centered Circular Header with Expandable Menu Icon -->
+<header>
+    <div class="menu-icon"></div>
+    <h1>AdMiner</h1>
+    <div class="header-options">
+        <div class="header-option" onclick="startDownload()">Download</div>
+        <div class="header-option" onclick="openPopup('contact')">Contact</div>
+        <div class="header-option" onclick="openPopup('help')">Help</div>
+        <div class="header-option" onclick="openPopup('stats')">My Stats</div>
+    </div>
+</header>
 
-    <!-- Floating "How It Works" Section -->
-    <section class="how-it-works floating-panel">
-        <h2>How AdMiner Works</h2>
-        <p>AdMiner is designed to allow users to earn passive income by simply viewing banner advertisements in the app. Once you download the app, it will always be showing the app until you close it, so don't get a fright if you can't close it. As you watch each ad, you accumulate earnings that are paid out daily. All you need is to keep the app running, and you’ll start earning!</p>
-    </section>
+<!-- Floating Panels -->
+<section class="hero floating-panel">
+    <h2>Earn Money While Viewing Ads</h2>
+    <p>With AdMiner, you can start mining ads today and earn around $5 daily. It's safe, trusted, and easy to use.</p>
+    <button class="btn-primary" onclick="startDownload()">Download AdMiner</button>
+</section>
 
-    <!-- Features Section (Non-floating) -->
-    <section class="features">
-        <div class="feature-box">
-            <h3>Easy to Use</h3>
-            <p>Start mining ads with just a click. No complicated setup is required.</p>
-        </div>
-        <div class="feature-box">
-            <h3>Secure Earnings</h3>
-            <p>Your data is secure, and payouts are handled automatically and daily.</p>
-        </div>
-        <div class="feature-box">
-            <h3>Passive Income</h3>
-            <p>Simply run AdMiner and let the earnings come in without extra effort.</p>
-        </div>
-    </section>
+<section class="features floating-panel">
+    <div class="feature-box">
+        <h3>Easy to Use</h3>
+        <p>Start mining ads with just a click. No complicated setup is required.</p>
+    </div>
+    <div class="feature-box">
+        <h3>Secure Earnings</h3>
+        <p>Your data is secure, and payouts are handled automatically and daily.</p>
+    </div>
+    <div class="feature-box">
+        <h3>Passive Income</h3>
+        <p>Simply run AdMiner and let the earnings come in without extra effort.</p>
+    </div>
+</section>
 
-    <!-- Floating CTA Section -->
-    <section class="cta floating-panel">
-        <h2>Ready to Start Earning?</h2>
-        <p>Download AdMiner today and start earning passive income by viewing ads!</p>
-        <a href="thankyou.html" class="btn-primary">Download Now</a>
-    </section>
+<section class="cta floating-panel">
+    <h2>Ready to Start Earning?</h2>
+    <p>Download AdMiner today and start earning passive income by viewing ads!</p>
+    <button class="btn-primary" onclick="startDownload()">Download Now</button>
+</section>
 
-    <footer>
-        <p>&copy; 2024 AdMiner. All rights reserved.</p>
-    </footer>
+<footer>
+    <p>&copy; 2024 AdMiner. All rights reserved.</p>
+</footer>
+
+<!-- Popups -->
+<div class="overlay" id="overlay" onclick="closePopup()"></div>
+<div class="popup" id="contact">
+    <h3>Contact Us</h3>
+    <p>Email: admin@adminer.com</p>
+    <button onclick="closePopup()">Close</button>
+</div>
+<div class="popup" id="help">
+    <h3>FAQ</h3>
+    <p><b>How does AdMiner work?</b> AdMiner displays ads, and you earn revenue per view.</p>
+    <button onclick="closePopup()">Close</button>
+</div>
+<div class="popup" id="stats">
+    <h3>My Stats</h3>
+    <p>Money Earned: $0</p>
+    <p>Machine: <span id="machine"></span></p>
+    <p>Balance: $0</p>
+    <p>Estimated Monthly Income: $0</p>
+    <button onclick="closePopup()">Close</button>
+</div>
+
+<script>
+    // Display Machine Stats
+    document.getElementById('machine').textContent = navigator.platform;
+
+    function startDownload() {
+        window.location.href = 'thankyou.html';
+    }
+
+    // Popups
+    function openPopup(id) {
+        document.getElementById(id).style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+    function closePopup() {
+        document.querySelectorAll('.popup').forEach(popup => popup.style.display = 'none');
+        document.getElementById('overlay').style.display = 'none';
+    }
+</script>
 </body>
 </html>
