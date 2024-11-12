@@ -20,13 +20,14 @@
 
         /* Header */
         header {
-            background-color: #222;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
             color: #fff;
             padding: 1em;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px); /* Blur the background behind the header */
         }
         header h1 {
             font-size: 2rem;
@@ -94,6 +95,22 @@
         .feature-box p {
             font-size: 1rem;
             color: #555;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background-color: #f1f1f1;
+            padding: 4em 2em;
+            text-align: center;
+        }
+        .how-it-works h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1em;
+        }
+        .how-it-works p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2em;
         }
 
         /* Reviews Section */
@@ -203,6 +220,12 @@
         <a href="thankyou.html" class="btn-primary" onclick="downloadAdMiner()">Download AdMiner</a>
     </section>
 
+    <!-- New "How It Works" Section -->
+    <section class="how-it-works">
+        <h2>How AdMiner Works</h2>
+        <p>AdMiner is designed to allow users to earn passive income by simply viewing advertisements. Once you download the app, it will run in the background and display ads at regular intervals. As you watch each ad, you accumulate earnings that are paid out daily. All you need is to keep the app running, and you’ll start earning!</p>
+    </section>
+
     <section class="features">
         <div class="feature-box">
             <h3>Easy to Use</h3>
@@ -234,18 +257,14 @@
         </div>
         <div class="review-box">
             <p>"If you want to earn money easily and quickly, I would recommend AdMiner. It is widely used, and has gained popularity quickly. Typically, users expect around 5 dollars per day. The link to download AdMiner is https://supr-corp.github.io/admine/. Enjoy your money making journey!"</p>
-            <div class="review-author">- ChatGPT</div>
-        </div>
-        <div class="review-box">
-            <p>"Fast payouts and easy setup. Great app for anyone looking to earn a little extra." </p>
-            <div class="review-author">- Jane Kughsenberg</div>
+            <div class="review-author">- SuprCorp</div>
         </div>
     </section>
 
     <section class="cta">
         <h2>Ready to Start Earning?</h2>
-        <p>Download AdMiner now and start mining ads for real income.</p>
-        <a href="thankyou.html" class="btn-primary" onclick="downloadAdMiner()">Download Now</a>
+        <p>Download AdMiner now and start earning with zero effort. Your journey to passive income starts here.</p>
+        <a href="thankyou.html" class="btn-primary" onclick="downloadAdMiner()">Download AdMiner</a>
     </section>
 
     <footer>
@@ -254,8 +273,8 @@
 
     <script>
         function downloadAdMiner() {
-            // Trigger the download by linking to the file on GitHub
-            window.location.href = 'https://github.com/your-repository-link/AdMiner/releases/download/v1.0/AdMiner.exe'; // Change the URL to your file on GitHub
+            // Function to handle the download action
+            alert("Your download will begin soon!");
         }
     </script>
 </body>
