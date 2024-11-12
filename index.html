@@ -38,6 +38,7 @@
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
             transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease;
             overflow: hidden;
+            padding: 0.5em;
         }
         header:hover {
             width: 90%;
@@ -45,13 +46,16 @@
             border-radius: 15px;
             padding: 1em;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            flex-direction: row;
+            justify-content: space-between;
         }
-        header h1 {
+        .logo {
             display: none;
-            font-size: 2rem;
+            width: 40px;
+            height: auto;
             margin-left: 1em;
         }
-        header:hover h1 {
+        header:hover .logo {
             display: block;
         }
         .menu-icon {
@@ -89,11 +93,18 @@
             display: none;
             text-align: center;
             margin-top: 1em;
+            flex-basis: 100%;
         }
         header:hover .header-options {
             display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 0;
+        }
+        .header-options.left,
+        .header-options.right {
+            display: flex;
             gap: 1.5em;
-            justify-content: center;
         }
         .header-option {
             color: #fff;
@@ -117,115 +128,6 @@
             animation: fadeIn 2s ease-out;
         }
 
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            background: linear-gradient(120deg, #1e90ff, #0b3d91);
-            color: #fff;
-            margin-top: 120px;
-        }
-        .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 0.5em;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 1em;
-        }
-        .btn-primary {
-            background: #ff9f00;
-            color: #fff;
-            padding: 0.75em 1.5em;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .btn-primary:hover {
-            background: #ff8500;
-        }
-
-        /* Floating Features Panel */
-        .features.floating-panel {
-            display: flex;
-            justify-content: space-around;
-            padding: 3em;
-        }
-        .feature-box {
-            max-width: 300px;
-            text-align: center;
-            padding: 1em;
-            transition: transform 0.3s ease;
-        }
-        .feature-box:hover {
-            transform: translateY(-10px);
-        }
-        .feature-box h3 {
-            margin-bottom: 0.5em;
-            font-size: 1.5rem;
-        }
-        .feature-box p {
-            font-size: 1rem;
-            color: #555;
-        }
-
-        /* CTA Section */
-        .cta {
-            text-align: center;
-            background-color: #0b3d91;
-            color: #fff;
-            animation: fadeInUp 1.5s ease-out;
-        }
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5em;
-        }
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 1em;
-        }
-
-        /* Popup Styling */
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            padding: 2em;
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            z-index: 1001;
-            text-align: center;
-        }
-        .popup h3 {
-            margin-bottom: 1em;
-        }
-        .popup button {
-            margin-top: 1em;
-            padding: 0.5em 1em;
-            background-color: #ff9f00;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        /* Overlay for Popups */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-        }
-
         /* Animations */
         @keyframes fadeIn {
             from {
@@ -242,10 +144,12 @@
 <!-- Floating, Centered Circular Header with Expandable Menu Icon -->
 <header>
     <div class="menu-icon"></div>
-    <h1>AdMiner</h1>
-    <div class="header-options">
+    <img src="your-logo.png" alt="AdMiner Logo" class="logo">
+    <div class="header-options left">
         <div class="header-option" onclick="startDownload()">Download</div>
         <div class="header-option" onclick="openPopup('contact')">Contact</div>
+    </div>
+    <div class="header-options right">
         <div class="header-option" onclick="openPopup('help')">Help</div>
         <div class="header-option" onclick="openPopup('stats')">My Stats</div>
     </div>
