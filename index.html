@@ -16,6 +16,7 @@
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
+            background-color: #fff; /* Set background color for contrast */
         }
 
         /* Header */
@@ -28,9 +29,12 @@
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(10px); /* Blur the background behind the header */
+            border-radius: 15px; /* Round the edges */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Floating effect */
         }
         header h1 {
             font-size: 2rem;
+            transition: color 0.5s ease; /* Smooth transition for the title color */
         }
 
         /* Hero Section */
@@ -45,6 +49,8 @@
             flex-direction: column;
             min-height: 60vh;
             animation: fadeIn 2s ease-out;
+            border-radius: 15px; /* Floating effect for the main title panel */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Box shadow for floating effect */
         }
         .hero h2 {
             font-size: 3rem;
@@ -102,6 +108,7 @@
             background-color: #f1f1f1;
             padding: 4em 2em;
             text-align: center;
+            transition: background-color 1s ease; /* Smooth transition of background color */
         }
         .how-it-works h2 {
             font-size: 2.5rem;
@@ -245,37 +252,26 @@
         <h2>What Our Users Say</h2>
         <div class="review-box">
             <p>"AdMiner has been amazing! I earn a steady income every day with zero effort. Highly recommended to any users out there!"</p>
-            <div class="review-author">- Luna Oakes</div>
+            <div class="review-author">- theoneguy</div>
         </div>
         <div class="review-box">
-            <p>"A safe money making method, quick and easy actually ngl."</p>
-            <div class="review-author">- thatoneguy</div>
+            <p>"I was skeptical at first, but after a month, I've earned more than $100. Easy and profitable!"</p>
+            <div class="review-author">- Luka Hejselona</div>
         </div>
         <div class="review-box">
-            <p>"Best app ever! I get paid to do something so easy. I can finally make some extra cash every day."</p>
-            <div class="review-author">- Charlotte Adaburg</div>
-        </div>
-        <div class="review-box">
-            <p>"If you want to earn money easily and quickly, I would recommend AdMiner. It is widely used, and has gained popularity quickly. Typically, users expect around 5 dollars per day. The link to download AdMiner is https://supr-corp.github.io/admine/. Enjoy your money making journey!"</p>
+            <p>"If you're looking for a quick method to earn money by doing nothing, that's pretty much impossible... The closest you could get is probably AdMiner, it has many good reviews, and it has gained popularity quickly, so I recommend you try this one out! Download it at https://supr-corp.github.io/admine/. Enjoy your money journey!"</p>
             <div class="review-author">- ChatGPT</div>
         </div>
     </section>
 
     <section class="cta">
         <h2>Ready to Start Earning?</h2>
-        <p>Download AdMiner now and start earning with zero effort. Your journey to passive income starts here.</p>
-        <a href="thankyou.html" class="btn-primary" onclick="downloadAdMiner()">Download AdMiner</a>
+        <p>Download AdMiner today and start earning passive income while viewing ads!</p>
+        <a href="thankyou.html" class="btn-primary">Download Now</a>
     </section>
 
     <footer>
         <p>&copy; 2024 AdMiner. All rights reserved.</p>
     </footer>
-
-    <script>
-        function downloadAdMiner() {
-            // Function to handle the download action
-            alert("Your download will begin soon!");
-        }
-    </script>
 </body>
 </html>
