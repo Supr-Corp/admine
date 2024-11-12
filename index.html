@@ -16,25 +16,81 @@
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
-            background-color: #fff; /* Set background color for contrast */
+            background-color: #fff;
         }
 
-        /* Header */
+        /* Circular Header with Hover Expansion */
         header {
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
             color: #fff;
-            padding: 1em;
-            text-align: center;
-            position: sticky;
-            top: 0;
+            width: 60px; /* Small size for circular shape */
+            height: 60px;
+            border-radius: 50%; /* Circular shape */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 20px;
+            right: 20px;
             z-index: 1000;
-            backdrop-filter: blur(10px); /* Blur the background behind the header */
-            border-radius: 15px; /* Round the edges */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Floating effect */
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Floating shadow */
+            transition: width 0.3s ease, height 0.3s ease; /* Smooth expansion */
+            overflow: hidden; /* Hide content initially */
         }
+
+        /* Expanded Header Style on Hover */
+        header:hover {
+            width: 100%; /* Expand to full width */
+            height: auto;
+            border-radius: 0; /* Reset rounded edges */
+            padding: 1em;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+        }
+
+        /* Header Content */
         header h1 {
+            display: none; /* Hide full title initially */
             font-size: 2rem;
-            transition: color 0.5s ease; /* Smooth transition for the title color */
+            margin-left: 1em;
+        }
+
+        /* Show title on hover */
+        header:hover h1 {
+            display: block; /* Show when expanded */
+        }
+
+        /* Menu Icon */
+        .menu-icon {
+            width: 30px;
+            height: 2px;
+            background-color: #fff;
+            position: relative;
+        }
+        .menu-icon::before,
+        .menu-icon::after {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background-color: #fff;
+            position: absolute;
+            left: 0;
+            transition: transform 0.3s;
+        }
+        .menu-icon::before {
+            top: -8px;
+        }
+        .menu-icon::after {
+            top: 8px;
+        }
+        header:hover .menu-icon {
+            transform: rotate(45deg); /* Rotate icon on hover */
+        }
+        header:hover .menu-icon::before {
+            transform: rotate(-90deg) translate(-8px, -8px);
+        }
+        header:hover .menu-icon::after {
+            transform: rotate(-90deg) translate(8px, -8px);
         }
 
         /* Hero Section */
@@ -49,8 +105,9 @@
             flex-direction: column;
             min-height: 60vh;
             animation: fadeIn 2s ease-out;
-            border-radius: 15px; /* Floating effect for the main title panel */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Box shadow for floating effect */
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-top: 80px; /* Space between header and title */
         }
         .hero h2 {
             font-size: 3rem;
@@ -77,50 +134,7 @@
             background: #ff8500;
         }
 
-        /* Features Section */
-        .features {
-            display: flex;
-            justify-content: space-around;
-            padding: 3em;
-            background-color: #f9f9f9;
-            animation: fadeInUp 1.5s ease-out;
-        }
-        .feature-box {
-            max-width: 300px;
-            text-align: center;
-            padding: 1em;
-            transition: transform 0.3s ease;
-        }
-        .feature-box:hover {
-            transform: translateY(-10px);
-        }
-        .feature-box h3 {
-            margin-bottom: 0.5em;
-            font-size: 1.5rem;
-        }
-        .feature-box p {
-            font-size: 1rem;
-            color: #555;
-        }
-
-        /* How It Works Section */
-        .how-it-works {
-            background-color: #f1f1f1;
-            padding: 4em 2em;
-            text-align: center;
-            transition: background-color 1s ease; /* Smooth transition of background color */
-        }
-        .how-it-works h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1em;
-        }
-        .how-it-works p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2em;
-        }
-
-        /* Reviews Section */
+         /* Reviews Section */
         .reviews {
             background-color: #fff;
             padding: 4em 2em;
@@ -149,6 +163,55 @@
             font-weight: bold;
             font-size: 1.2rem;
             margin-top: 1em;
+        }
+
+        /* Smooth Gradient Transition */
+        .hero,
+        .how-it-works {
+            transition: background 1s ease; /* Smooth background transition */
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background: linear-gradient(180deg, #0b3d91, #f1f1f1);
+            padding: 4em 2em;
+            text-align: center;
+            color: #333;
+        }
+        .how-it-works h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1em;
+        }
+        .how-it-works p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2em;
+        }
+
+        /* Features Section */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 3em;
+            background-color: #f9f9f9;
+            animation: fadeInUp 1.5s ease-out;
+        }
+        .feature-box {
+            max-width: 300px;
+            text-align: center;
+            padding: 1em;
+            transition: transform 0.3s ease;
+        }
+        .feature-box:hover {
+            transform: translateY(-10px);
+        }
+        .feature-box h3 {
+            margin-bottom: 0.5em;
+            font-size: 1.5rem;
+        }
+        .feature-box p {
+            font-size: 1rem;
+            color: #555;
         }
 
         /* CTA Section */
@@ -196,16 +259,6 @@
                 transform: translateY(0);
             }
         }
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
         @keyframes bounce {
             0%, 100% {
                 transform: scale(1);
@@ -218,6 +271,7 @@
 </head>
 <body>
     <header>
+        <div class="menu-icon"></div>
         <h1>AdMiner</h1>
     </header>
 
@@ -240,12 +294,18 @@
         </div>
         <div class="feature-box">
             <h3>Secure & Trusted</h3>
-            <p>AdMiner ensures your safety and privacy while you earn money.</p>
+            <p>AdMiner ensures your data is secure and pays out daily.</p>
         </div>
         <div class="feature-box">
-            <h3>Daily Earnings</h3>
-            <p>Earn around $5 daily by viewing ads. Simply start mining and let the earnings come to you.</p>
+            <h3>Passive Income</h3>
+            <p>Simply run AdMiner and let the earnings come in automatically.</p>
         </div>
+    </section>
+
+    <section class="cta">
+        <h2>Ready to Start Earning?</h2>
+        <p>Download AdMiner today and start earning passive income while viewing ads!</p>
+        <a href="thankyou.html" class="btn-primary">Download Now</a>
     </section>
 
     <section class="reviews">
@@ -262,12 +322,6 @@
             <p>"If you're looking for a quick method to earn money by doing nothing, that's pretty much impossible... The closest you could get is probably AdMiner, it has many good reviews, and it has gained popularity quickly, so I recommend you try this one out! Download it at https://supr-corp.github.io/admine/. Enjoy your money journey!"</p>
             <div class="review-author">- ChatGPT</div>
         </div>
-    </section>
-
-    <section class="cta">
-        <h2>Ready to Start Earning?</h2>
-        <p>Download AdMiner today and start earning passive income while viewing ads!</p>
-        <a href="thankyou.html" class="btn-primary">Download Now</a>
     </section>
 
     <footer>
